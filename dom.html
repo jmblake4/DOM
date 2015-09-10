@@ -28,7 +28,6 @@
 					new_div.onmouseover = DisplayIDNumber;
 					new_div.onmouseleave = HideIDNumber;
 					new_div.onclick = SetRandomBGColor;
-					new_div.style.b
 					if (div_index % 2 == 0) {
 						new_div.ondblclick = RemoveNextSibling;
 					} else {
@@ -67,6 +66,7 @@
 					return false;
 				} else {
 					previous_sibling.parentNode.removeChild(previous_sibling);
+					return true;
 				}
 			};
 
@@ -77,6 +77,7 @@
 					return false;
 				} else {
 					next_sibling.parentNode.removeChild(next_sibling);
+					return true;
 				}
 			}
 
