@@ -1,39 +1,92 @@
 <html>
 	<head>
+		<link href="styles.css" rel="stylesheet">
 		<script>
-			// To wait for document to load use something like
-			// document.addEventListener('DOMContentLoaded', go);
-			
-			// need to wait for document to load
-			// add the Add Node button that will call AddColorBox function
-			
-			// each box must have a unique number value
-			// when clicked on it changes to a random color
-			// when an even numbered box is double clicked on, remove the box to its left
-			// when an odd numbered box is double clicked on, remove the box to its right
 			
 			document.addEventListener('DOMContentLoaded', AddNAButton);
 			
 			function AddNAButton() {
-				//var val1 = document.getElementById('val1');
-				//print(add(parseInt(val1.value),parseInt(val2.value)));
+				var div_button = document.createElement('div');
 				var add_node_button = document.createElement('button');
-				var button_text = document.createTextNode("Add Node");
 				add_node_button.innerText = "Add Node";
-				document.body.appendChild(add_node_button);
+				add_node_button.onclick = AddDivBox;
+				div_button.appendChild(add_node_button);
+				div_button.style.margin = "25px auto 25px auto";
+				div_button.id = "divbutton";
+				document.body.appendChild(div_button);
 			}
-//			function createColoredDiv(color) {
-//				var div = document.createElement('div');
-//				div.innerText = 'Hello World';
-//				div.style.fontSize = '50px';
-//				div.style.color = color;
-//			}
-//			function add(a,b) {
-//				return a+b;
-//			}
-//			function print {
-//				document.querySelectorAll('.results')[0].innerHTML = val;
-//			}
+
+			function AddDivBox() {
+				console.log("AddDivBox")
+				var new_div = document.createElement('div');
+				var div_index = FindAvailableIndex();
+				var div_id;
+				if (div_index === null) alert("Already have 100 div items, no more allowed!");
+				else {
+					div_id = "div_" + div_index.toString();
+//					console.log("div id = " + div_id);
+//					new_div.innerHTML = div_index.toString();
+					new_div.className = "dynamic_div";
+					new_div.id = div_id;
+					new_div.onmouseover = DisplayIDNumber;
+					new_div.onmouseleave = HideIDNumber;
+					new_div.onclick = SetRandomBGColor;
+					new_div.style.b
+					if (div_index % 2 == 0) {
+						new_div.ondblclick = RemoveNextSibling;
+					} else {
+						new_div.ondblclick = RemovePreviousSibling;
+					}
+					document.body.appendChild(new_div);
+				}
+			}
+
+			function DisplayIDNumber() {			
+				this.innerText = this.id.substr(4);
+			}
+			
+			function HideIDNumber() {
+				this.innerText = "";
+			}
+
+			function SetRandomBGColor() {
+				var ran_color = "rgb(" + Math.floor(Math.random()*256).toString() + "," + Math.floor(Math.random()*256).toString() + "," + Math.floor(Math.random()*256).toString() + ")";
+				this.style.backgroundColor = ran_color;
+			}
+
+			function FindAvailableIndex() {
+				var div;
+//				console.log("FindAvailableIndex");
+				for (i=0 ; i<100 ; i++) {
+//					console.log("div_"+i.toString());
+					div = document.querySelector("#div_" + i.toString())
+					if (div === null) return i;
+				}
+				return null;
+			}
+
+			function RemovePreviousSibling() {
+				var previous_sibling = this.previousSibling;
+				if (previous_sibling === null || previous_sibling.className != "dynamic_div") {
+					alert("There is no previous sibling to remove.");
+					return false;
+				} else {
+					previous_sibling.parentNode.removeChild(previous_sibling);
+				}
+				console.log("RemoveLeft of " + this.id);
+			};
+
+			function RemoveNextSibling() {
+				var next_sibling = this.nextSibling;
+				if (next_sibling === null || next_sibling.className != "dynamic_div") {
+					alert("There is no next sibling to remove.");
+					return false;
+				} else {
+					next_sibling.parentNode.removeChild(next_sibling);
+				}
+				console.log("RemoveRight of " + this.id);
+			}
+
 		</script>
 	</head>
 	<body>

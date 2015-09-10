@@ -1,0 +1,15 @@
+#divbutton {
+	display: block;
+	text-align: center;
+}
+
+.dynamic_div {
+	float: left;
+	width: 100px;
+	height: 100px;
+	color: #ffffff;
+	background-color: #000000;
+	margin: 5px 5px 5px 5px;
+	font-size: 50px;
+	text-align: center;
+}
