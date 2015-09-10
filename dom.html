@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<script>
+			// To wait for document to load use something like
+			// document.addEventListener('DOMContentLoaded', go);
+			
+			// need to wait for document to load
+			// add the Add Node button that will call AddColorBox function
+			
+			// each box must have a unique number value
+			// when clicked on it changes to a random color
+			// when an even numbered box is double clicked on, remove the box to its left
+			// when an odd numbered box is double clicked on, remove the box to its right
+			
+			document.addEventListener('DOMContentLoaded', AddNAButton);
+			
+			function AddNAButton() {
+				//var val1 = document.getElementById('val1');
+				//print(add(parseInt(val1.value),parseInt(val2.value)));
+				var add_node_button = document.createElement('button');
+				var button_text = document.createTextNode("Add Node");
+				add_node_button.innerText = "Add Node";
+				document.body.appendChild(add_node_button);
+			}
+//			function createColoredDiv(color) {
+//				var div = document.createElement('div');
+//				div.innerText = 'Hello World';
+//				div.style.fontSize = '50px';
+//				div.style.color = color;
+//			}
+//			function add(a,b) {
+//				return a+b;
+//			}
+//			function print {
+//				document.querySelectorAll('.results')[0].innerHTML = val;
+//			}
+		</script>
+	</head>
+	<body>
+	</body>
+<html>		
