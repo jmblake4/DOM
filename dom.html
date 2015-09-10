@@ -17,15 +17,12 @@
 			}
 
 			function AddDivBox() {
-				console.log("AddDivBox")
 				var new_div = document.createElement('div');
 				var div_index = FindAvailableIndex();
 				var div_id;
 				if (div_index === null) alert("Already have 100 div items, no more allowed!");
 				else {
 					div_id = "div_" + div_index.toString();
-//					console.log("div id = " + div_id);
-//					new_div.innerHTML = div_index.toString();
 					new_div.className = "dynamic_div";
 					new_div.id = div_id;
 					new_div.onmouseover = DisplayIDNumber;
@@ -56,9 +53,7 @@
 
 			function FindAvailableIndex() {
 				var div;
-//				console.log("FindAvailableIndex");
 				for (i=0 ; i<100 ; i++) {
-//					console.log("div_"+i.toString());
 					div = document.querySelector("#div_" + i.toString())
 					if (div === null) return i;
 				}
@@ -73,7 +68,6 @@
 				} else {
 					previous_sibling.parentNode.removeChild(previous_sibling);
 				}
-				console.log("RemoveLeft of " + this.id);
 			};
 
 			function RemoveNextSibling() {
@@ -84,7 +78,6 @@
 				} else {
 					next_sibling.parentNode.removeChild(next_sibling);
 				}
-				console.log("RemoveRight of " + this.id);
 			}
 
 		</script>
